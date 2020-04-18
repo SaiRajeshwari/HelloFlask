@@ -4,6 +4,6 @@ services:
     restart: always
     build: .
     ports:
-     - "8080:5000"
+     - "5000:5000"
     volumes:
      - .:/code
