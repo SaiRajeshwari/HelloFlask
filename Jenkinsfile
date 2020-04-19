@@ -24,6 +24,15 @@ pipeline {
         }
       }
     }
+    stage('Test Logstash') {
+      steps {
+        timestamps {
+          logstash{
+            echo "Hello Logstash"
+          }
+        }
+      }
+    }
     stage('Test') {
       steps {
         sh 'python test.py'
@@ -61,5 +70,4 @@ pipeline {
     }
 
   }
-  logstashSend failBuild: true, maxLines: 1000
 }
