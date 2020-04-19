@@ -7,7 +7,9 @@ pipeline {
       }
     }
     stage('Code Analysis') {
+      steps {
         sh "echo 'Run Static Code Analysis'"
+      }
     }
     stage('Test') {
       steps {
