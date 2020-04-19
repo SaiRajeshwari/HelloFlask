@@ -6,7 +6,9 @@ pipeline {
       steps {
         sh 'pip install -r requirements.txt'
         echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-        workspace = pwd()
+        script {
+          workspace = pwd()
+        }
       }
     }
     stage('Code Analysis') {
