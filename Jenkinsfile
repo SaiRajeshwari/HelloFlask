@@ -52,11 +52,11 @@ pipeline {
         script {
           try {
             build 'Deploy'
-          } catch (err) {
-            echo err
+          } catch (Exception ex) {
+            echo ex
           }
         }
-        echo "RESULT: ${currentBuild.currentResult}"
+        echo "Deploy Result: ${currentBuild.currentResult}"
       }
     }
 
