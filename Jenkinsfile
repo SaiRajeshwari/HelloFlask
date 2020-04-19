@@ -32,7 +32,19 @@ pipeline {
         always {
           junit 'test-reports/*.xml'
         }
-      }    
+        success {
+          echo 'All tests were successful'
+          mail to: 'sairajeshwari.g@gmail.com',
+              subject: "Successful Pipeline: ${currentBuild.fullDisplayName}",
+              body: "${env.BUILD_URL} build successfully"
+        }
+        failure {
+          echo 'Failed test cases'
+          mail to: 'sairajeshwari.g@gmail.com',
+              subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+              body: "Something is wrong with ${env.BUILD_URL}"
+        }
+      }
     }
     stage('Deploy') {
       steps {
