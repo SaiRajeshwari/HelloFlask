@@ -6,12 +6,13 @@ pipeline {
       steps {
         sh 'pip install -r requirements.txt'
         echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+        workspace = pwd()
       }
     }
     stage('Code Analysis') {
       steps {
         sh "echo 'Run Static Code Analysis'"
-        build job: 'Code Analysis', parameters: [string(name: 'workspace', value: '')]
+        build job: 'Code Analysis', parameters: [string(name: 'workspace', value: workspace)]
       }
     }
     stage('Test') {
