@@ -5,8 +5,8 @@ pipeline {
     stage('Build') {
       steps {
         sh 'pip install -r requirements.txt'
-        sh "echo 'Running ${env.BUILD_ID} on ${env.JENKINS_URL}'"
-        sh "echo 'Workspace ${workspace}'"
+        echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+        echo "Workspace ${workspace}"
       }
     }
     stage('Code Analysis') {
