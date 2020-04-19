@@ -52,8 +52,8 @@ pipeline {
         script {
           try {
             build 'Deploy'
-          } catch (Exception ex) {
-            echo ex
+          } catch (ex) {
+            echo 'catch exceptions'
           }
         }
         echo "Deploy Result: ${currentBuild.currentResult}"
