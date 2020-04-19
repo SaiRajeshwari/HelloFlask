@@ -1,4 +1,4 @@
-def workspace
+def workspace = pwd()
 pipeline {
   agent { docker { image 'python:3.7.2' } }
   stages {
@@ -6,9 +6,7 @@ pipeline {
       steps {
         sh 'pip install -r requirements.txt'
         echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-        script {
-          workspace = pwd()
-        }
+        echo "Workspace" ${workspace}
       }
     }
     stage('Code Analysis') {
