@@ -49,8 +49,16 @@ pipeline {
     stage('Deploy') {
       steps {
         sh "echo 'Ready to deploy!'"
-        build 'Deploy'
+        script {
+          try {
+            build 'Deploy'
+          } catch (err) {
+            echo err
+          }
+        }
+        echo "RESULT: ${currentBuild.result}"
       }
     }
+
   }
 }
