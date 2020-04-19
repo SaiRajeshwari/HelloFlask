@@ -15,6 +15,13 @@ pipeline {
       steps {
         sh "echo 'Run Static Code Analysis'"
         build job: 'Code Analysis', parameters: [string(name: 'workspace', value: workspace)]
+        script {
+          def browsers = ['chrome', 'firefox']
+          for (int i = 0; i < browsers.size(); ++i) {
+            echo "Testing the ${browsers[i]} browser"
+          }
+
+        }
       }
     }
     stage('Test') {
