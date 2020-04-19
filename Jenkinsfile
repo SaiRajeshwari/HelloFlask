@@ -56,7 +56,7 @@ pipeline {
             echo err
           }
         }
-        echo "RESULT: ${currentBuild.result}"
+        echo "RESULT: ${currentBuild.currentResult}"
       }
     }
 
