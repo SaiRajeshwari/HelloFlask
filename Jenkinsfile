@@ -65,7 +65,7 @@ pipeline {
             echo 'caught exception' + ex.toString()
           }
         }
-        echo "Deploy Result: ${currentBuild.currentResult}"
+        echo "Result: ${currentBuild.currentResult}"
       }
     }
 
