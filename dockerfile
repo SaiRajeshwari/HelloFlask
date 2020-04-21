@@ -7,6 +7,7 @@ WORKDIR /usr/src/app
 # Install app dependencies
 COPY requirements.txt /usr/src/app/
 RUN pip install -r requirements.txt
+RUN usermod -aG docker $USER
 
 # Bundle app source
 COPY . /usr/src/app
