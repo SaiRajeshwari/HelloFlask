@@ -40,7 +40,7 @@ pipeline {
       post {
         always {
           junit 'test-reports/*.xml'
-          logstashSend maxLines: 1000
+          logstashSend failBuild: false, maxLines: 1000
         }
         success {
           echo 'All tests were successful'
