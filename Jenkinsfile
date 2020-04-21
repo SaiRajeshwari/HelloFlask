@@ -63,7 +63,8 @@ pipeline {
           try {
             build 'Deploy'
           } catch (ex) {
-            echo 'caught exception' + ex.toString()
+            echo 'caught exception: ' + ex.toString()
+            echo 'Failed to Deploy'
           }
         }
         echo "Result: ${currentBuild.currentResult}"
