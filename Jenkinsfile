@@ -74,11 +74,11 @@ pipeline {
     stage ('Random Success/Fail') {
       steps {
         sh "echo 'Hello'"
-        /*script {
+        script {
           if (currentBuild.number % 2 == 0) {
             throw new Exception("Something went wrong!")
           }
-        }*/
+        }
       }
       post {
         always {
