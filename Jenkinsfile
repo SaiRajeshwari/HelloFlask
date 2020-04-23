@@ -24,7 +24,7 @@ pipeline {
         }
       }
     }
-    stage('Test Logstash') {
+    /* stage('Test Logstash') {
       steps {
         timestamps {
           logstash{
@@ -32,7 +32,7 @@ pipeline {
           }
         }
       }
-    }
+    } */
     stage('Test') {
       steps {
         sh 'python test.py'
