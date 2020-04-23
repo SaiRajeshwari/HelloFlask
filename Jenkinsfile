@@ -69,11 +69,23 @@ pipeline {
         }
         echo "Result: ${currentBuild.currentResult}"
       }
+    }
+
+    stage ('Random Success/Fail') {
+      steps {
+        script {
+          int jobDuration = (System.currentTimeMillis() - currentBuild.startTimeInMillis)/1000;
+          if (jobDuration > 30) {
+            throw new Exception("Something went wrong!")
+          }
+        }
+      }
       post {
         always {
           logstashSend failBuild: false, maxLines: 1000
         }
       }
+      
     }
 
   }
