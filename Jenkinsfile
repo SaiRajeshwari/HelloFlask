@@ -74,8 +74,7 @@ pipeline {
     stage ('Random Success/Fail') {
       steps {
         script {
-          int jobDuration = (System.currentTimeMillis() - currentBuild.startTimeInMillis)/1000;
-          if (jobDuration > 30) {
+          if (currentBuild.number % 2 == 0) {
             throw new Exception("Something went wrong!")
           }
         }
@@ -85,7 +84,7 @@ pipeline {
           logstashSend failBuild: false, maxLines: 1000
         }
       }
-      
+
     }
 
   }
